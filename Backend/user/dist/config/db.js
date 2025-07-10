@@ -7,7 +7,7 @@ const connectDb = async () => {
         throw new Error("MONGO URI IS NOT GIVEN");
     try {
         await mongoose.connect(url, { dbName: "Chattingapp" });
-        console.log("DATABASE CONNECTED!!");
+        console.log("✅ Connected to MongoDB Database!!");
     }
     catch (error) {
         console.error("failed to connect to MONGODB", error);
