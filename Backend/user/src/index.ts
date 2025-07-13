@@ -8,6 +8,7 @@ import { connectRabbitmq } from "./config/rabbitmq.js";
 
 dotenv.config();
 const app = express();
+app.use(express.json());
 
 const port = process.env.PORT;
 
@@ -28,4 +29,4 @@ app.listen(port, () => {
   console.log(`Server is Running at PORT : ${port}`);
 });
 
-app.use("api/v1", userRoutes);
+app.use("/api/v1", userRoutes);
