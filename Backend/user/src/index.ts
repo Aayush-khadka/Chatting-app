@@ -3,12 +3,13 @@ import dotenv from "dotenv";
 import connectDb from "./config/db.js";
 import { createClient } from "redis";
 import userRoutes from "./routes/user.js";
-import { user } from "./model/user.js";
 import { connectRabbitmq } from "./config/rabbitmq.js";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const port = process.env.PORT;
 

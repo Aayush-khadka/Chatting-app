@@ -8,7 +8,7 @@ export const isAuth = async (req, res, next) => {
             });
             return;
         }
-        const token = authHeader.split("")[1];
+        const token = authHeader.split(" ")[1];
         const decodedValue = jwt.verify(token, process.env.JWT_SECRET);
         if (!decodedValue || !decodedValue.user) {
             res.status(401).json({
@@ -17,6 +17,7 @@ export const isAuth = async (req, res, next) => {
             return;
         }
         req.user = decodedValue.user;
+        next();
     }
     catch (error) {
         res.status(401).json({
